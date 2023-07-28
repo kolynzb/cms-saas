@@ -967,5 +967,7 @@ module.exports = {
     'active',
     'disabled',
   ],
-  plugins: [],
+  plugins: [
+    require("flowbite/plugin")
+  ],
 }
