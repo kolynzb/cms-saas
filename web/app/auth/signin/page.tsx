@@ -14,10 +14,10 @@ const SignIn = (props: Props) => {
                   src="https://tailus.io/sources/blocks/social/preview/images/icon.svg"
                   loading="lazy"
                   className="w-10"
-                  alt="tailus logo"
+                  alt="logo"
                 />
                 <h2 className="mb-8 text-2xl text-cyan-900 font-bold">
-                  Sign in to unlock the <br /> best of Tailus.
+                  Sign in to unlock the <br /> best of logo.
                 </h2>
               </div>
               <div className="mt-16 grid space-y-4">
