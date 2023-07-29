@@ -1,5 +1,6 @@
 import React from "react";
 import Container from "./Container";
+import Link from "next/link";
 
 type Props = {};
 
@@ -190,10 +191,10 @@ const Footer = (props: Props) => {
                 <a href="#" className="font-medium">
                   Terms of Use{" "}
                 </a>
-                <a href="#" className="font-medium">
+                <Link href="/privacy-policy" className="font-medium">
                   {" "}
                   Privacy Policy
-                </a>
+                </Link>
               </span>
 
               <span className="block text-gray-500 dark:text-gray-400">
