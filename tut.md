@@ -1,0 +1,2 @@
+- [Firebase Offline](https://firebase.google.com/docs/firestore/manage-data/enable-offline)
+- [Finetuning gpt](https://www.youtube.com/watch?v=Q9zv369Ggfk)

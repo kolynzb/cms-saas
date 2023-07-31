@@ -8,3 +8,6 @@ https://firebase.flutter.dev/docs/functions/usage/
 https://blog.devgenius.io/firebase-authentication-with-custom-node-js-express-backend-2ae9c04571b5
 
 - Read about tailwind themes
+
+- [Next Flowbite starter](https://github.dev/tulupinc/flowbite-next-starter)
+- [ Firebase Next js Auth setup](https://levelup.gitconnected.com/auth-with-firebase-for-your-next-js-react-app-in-2023-a30b65b5b2b1)
