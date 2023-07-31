@@ -1,3 +1,4 @@
+"use client";
 import { useSendPasswordResetEmail } from "react-firebase-hooks/auth";
 import SubmitBtn from "@components/buttons/auth/SubmitBtn";
 import FieldErrorMessage from "@components/landing/forms/FieldErrorMessage";
