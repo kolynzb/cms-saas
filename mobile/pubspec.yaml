@@ -1,31 +1,45 @@
 name: mobile
 description: A new Flutter project.
- 
-publish_to: 'none'  
 
- 
+publish_to: "none"
+
 version: 1.0.0+1
 
 environment:
-  sdk: '>=3.0.6 <4.0.0'
+  sdk: ">=3.0.6 <4.0.0"
 
- 
 dependencies:
   flutter:
     sdk: flutter
- 
+
   cupertino_icons: ^1.0.2
   firebase_core: ^2.15.0
+  flutter_native_splash: ^2.3.1
+  shared_preferences: ^2.2.0
+  ternav_icons: ^1.0.0
+  fl_chart: ^0.63.0
+  percent_indicator: ^4.2.3
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
- 
-  flutter_lints: ^2.0.0
 
+  flutter_lints: ^2.0.0
 
 flutter:
   uses-material-design: true
 
   assets:
     - assets/
+    - assets/onboarding/
+
+flutter_native_splash:
+  android: true
+  ios: true
+  web: true
+
+  # color: "#f9f9f9"
+  # image: "assets/splash/background_image.png"
+  # color_dark: "#000000"
+  # image_dark: "assets/splash/background_image.png"
+  # background_image: "assets/splash/background_image.png"
