@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:mobile/screens/home_screen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 // https://www.fluttertemplates.dev/templates/app-onboarding
 // https://github.com/fluttertemplates-dev/onboarding_screen
@@ -31,6 +33,14 @@ class _OnboardingPageState extends State<OnboardingPage> {
   int _currentPage = 0;
   // Define a controller for the pageview
   final PageController _pageController = PageController(initialPage: 0);
+
+  _storeOnboardInfo() async {
+    // print("Shared pref called");
+    int isViewed = 0;
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setInt('onBoard', isViewed);
+    // print(prefs.getInt('onBoard'));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -127,15 +137,25 @@ class _OnboardingPageState extends State<OnboardingPage> {
                     TextButton(
                         onPressed: () {
                           // Handle Skipping onboarding page
+                          _storeOnboardInfo();
+                          Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const HomeScreen()));
                         },
                         child: const Text(
                           "Skip",
                           style: TextStyle(color: Colors.white),
                         )),
                     TextButton(
-                      onPressed: () {
+                      onPressed: () async {
                         if (_currentPage == widget.pages.length - 1) {
                           // This is the last page
+                          await _storeOnboardInfo();
+                          Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const HomeScreen()));
                         } else {
                           _pageController.animateToPage(_currentPage + 1,
                               curve: Curves.easeInOutCubic,
