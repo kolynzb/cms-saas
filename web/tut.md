@@ -11,3 +11,16 @@ https://blog.devgenius.io/firebase-authentication-with-custom-node-js-express-ba
 
 - [Next Flowbite starter](https://github.dev/tulupinc/flowbite-next-starter)
 - [ Firebase Next js Auth setup](https://levelup.gitconnected.com/auth-with-firebase-for-your-next-js-react-app-in-2023-a30b65b5b2b1)
+- [Tailwind wizard](https://www.creative-tim.com/learning-lab/tailwind/html/wizard/soft-ui-dashboard/)
+- [Chat Bot App](https://github.dev/vercel-labs/ai-chatbot)
+
+# Kanban
+
+- https://github.com/Hesam-Dearboy/kanban-task-management-react-tailwind?ref=reactjsexample.com
+- https://github.dev/seki2020/free-kanban
+- https://codesandbox.io/s/animated-draggable-kanban-board-with-tailwind-and-vue-1wp86?file=/src/App.vue:0-4615
+- react draggable
+
+- [UI components](https://horizon-ui.com/docs-tailwind/docs/react/accordion)
+- https://www.npmjs.com/package/emoji-picker-react
+- https://react-hot-toast.com/

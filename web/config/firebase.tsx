@@ -14,7 +14,8 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase for SSR
-export const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
+export const app = initializeApp(firebaseConfig);
+// export const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
 export const analytics = getAnalytics(app);
 
 // Initialize Firebase services

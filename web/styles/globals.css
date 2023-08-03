@@ -9,3 +9,23 @@
 #toggle_nav:checked ~ div #hamburger #line2 {
   @apply -rotate-45 -translate-y-1;
 }
+
+input.defaultCheckbox::before {
+  content: url(../public/assets/svg/checked.svg);
+  color: white;
+  opacity: 0;
+  height: 16px;
+  width: 16px;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0px);
+}
+
+input:checked.defaultCheckbox::before {
+  opacity: 1;
+}
+
+.glass-morph {
+  /* https://tailwindcss-glassmorphism.vercel.app/ */
+  @apply bg-gray-800  bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-90;
+}

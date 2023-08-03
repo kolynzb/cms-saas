@@ -1,239 +1,105 @@
 import React from "react";
+// import MiniCalendar from "@components/calendars/MiniCalendar";
+// import WeeklyRevenue from "@components/dashboard/WeeklyRevenue";
+// import TotalSpent from "@components/dashboard/TotalSpent";
+// import PieChartCard from "@components/dashboard/PieChartCard";
+import { IoMdHome } from "react-icons/io";
+import { IoDocuments } from "react-icons/io5";
+import { MdBarChart, MdDashboard } from "react-icons/md";
+
+import {
+  columnsDataCheck,
+  columnsDataComplex,
+} from "@data/dashboard/columnsData";
+
+import Widget from "@components/Widget";
+// import CheckTable from "@components/dashboard/CheckTable";
+// import ComplexTable from "@components/dashboard/ComplexTable";
+// import DailyTraffic from "@components/dashboard/DailyTraffic";
+// import TaskCard from "@components/dashboard/TaskCard";
+// import tableDataCheck from "@data/dashboard/tableDataCheck.json";
+// import tableDataComplex from "@data/dashboard/tableDataComplex.json";
 
 type Props = {};
 
 const Dashboard = (props: Props) => {
   return (
-    <div className="h-screen p-2 w-full">
-      <div className="grid lg:grid-cols-7 md:grid-cols-4 sm:grid-cols-2 gap-5">
-        {/* <!-- To-do --> */}
-        <div className="bg-white rounded px-2 py-2">
-          {/* <!-- board category header --> */}
-          <div className="flex flex-row justify-between items-center mb-2 mx-1">
-            <div className="flex items-center">
-              <h2 className="bg-red-100 text-sm w-max px-1 rounded mr-2 text-gray-700">
-                To-do
-              </h2>
-              <p className="text-gray-400 text-sm">3</p>
-            </div>
-            <div className="flex items-center text-gray-300">
-              <p className="mr-2 text-2xl">---</p>
-              <p className="text-2xl">+</p>
-            </div>
-          </div>
-          {/* <!-- board card --> */}
-          <div className="grid grid-rows-2 gap-2">
-            <div className="p-2 rounded shadow-sm border-gray-100 border-2">
-              <h3 className="text-sm mb-3 text-gray-700">Social media</h3>
-              <p className="bg-red-100 text-xs w-max p-1 rounded mr-2 text-gray-700">
-                To-do
-              </p>
-              <div className="flex flex-row items-center mt-2">
-                <div className="bg-gray-300 rounded-full w-4 h-4 mr-3"></div>
-                <a href="#" className="text-xs text-gray-500">
-                  Sophie Worso
-                </a>
-              </div>
-              <p className="text-xs text-gray-500 mt-2">2</p>
-            </div>
+    <div>
+      {/* Card widget */}
 
-            <div className="p-2 rounded shadow-sm border-gray-100 border-2">
-              <h3 className="text-sm mb-3 text-gray-700">
-                Review survey results
-              </h3>
-              <p className="bg-red-100 text-xs w-max p-1 rounded mr-2 text-gray-700">
-                To-do
-              </p>
-              <div className="flex flex-row items-center mt-2">
-                <div className="bg-gray-300 rounded-full w-4 h-4 mr-3"></div>
-                <a href="#" className="text-xs text-gray-500">
-                  Sophie Worso
-                </a>
-              </div>
-              <p className="text-xs text-gray-500 mt-2">1</p>
-            </div>
+      <div className="mt-3 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-3 3xl:grid-cols-6">
+        <Widget
+          icon={<MdBarChart className="h-7 w-7" />}
+          title={"Earnings"}
+          subtitle={"$340.5"}
+        />
+        <Widget
+          icon={<IoDocuments className="h-6 w-6" />}
+          title={"Spend this month"}
+          subtitle={"$642.39"}
+        />
+        <Widget
+          icon={<MdBarChart className="h-7 w-7" />}
+          title={"Sales"}
+          subtitle={"$574.34"}
+        />
+        <Widget
+          icon={<MdDashboard className="h-6 w-6" />}
+          title={"Your Balance"}
+          subtitle={"$1,000"}
+        />
+        <Widget
+          icon={<MdBarChart className="h-7 w-7" />}
+          title={"New Tasks"}
+          subtitle={"145"}
+        />
+        <Widget
+          icon={<IoMdHome className="h-6 w-6" />}
+          title={"Total Projects"}
+          subtitle={"$2433"}
+        />
+      </div>
 
-            <div className="p-2 rounded shadow-sm border-gray-100 border-2">
-              <h3 className="text-sm mb-3 text-gray-700">
-                Research video marketing
-              </h3>
-              <p className="bg-red-100 text-xs w-max p-1 rounded mr-2 text-gray-700">
-                To-do
-              </p>
-              <div className="flex flex-row items-center mt-2">
-                <div className="bg-gray-300 rounded-full w-4 h-4 mr-3"></div>
-                <a href="#" className="text-xs text-gray-500">
-                  Sophie Worso
-                </a>
-              </div>
-              <p className="text-xs text-gray-500 mt-2">3</p>
-            </div>
-          </div>
-          <div className="flex flex-row items-center text-gray-300 mt-2 px-1">
-            <p className="rounded mr-2 text-2xl">+</p>
-            <p className="pt-1 rounded text-sm">New</p>
-          </div>
-        </div>
+      {/* Charts */}
 
-        {/* <!-- WIP Kanban --> */}
-        <div className="bg-white rounded px-2 py-2">
-          {/* <!-- board category header --> */}
-          <div className="flex flex-row justify-between items-center mb-2 mx-1">
-            <div className="flex items-center">
-              <h2 className="bg-yellow-100 text-sm w-max px-1 rounded mr-2 text-gray-700">
-                WIP
-              </h2>
-              <p className="text-gray-400 text-sm">2</p>
-            </div>
-            <div className="flex items-center text-gray-300">
-              <p className="mr-2 text-2xl">---</p>
-              <p className="text-2xl">+</p>
-            </div>
-          </div>
-          {/* <!-- board card --> */}
-          <div className="grid grid-rows-2 gap-2">
-            <div className="p-2 rounded shadow-sm border-gray-100 border-2">
-              <h3 className="text-sm mb-3 text-gray-700">Blog post live</h3>
-              <p className="bg-yellow-100 text-xs w-max p-1 rounded mr-2 text-gray-700">
-                WIP
-              </p>
-              <div className="flex flex-row items-center mt-2">
-                <div className="bg-gray-300 rounded-full w-4 h-4 mr-3"></div>
-                <a href="#" className="text-xs text-gray-500">
-                  Sophie Worso
-                </a>
-              </div>
-              <p className="text-xs text-gray-500 mt-2">Jun 21, 2019</p>
-              <p className="text-xs text-gray-500 mt-2">2</p>
-            </div>
+      <div className="mt-5 grid grid-cols-1 gap-5 md:grid-cols-2">
+        {/* <TotalSpent />
+        <WeeklyRevenue /> */}
+      </div>
 
-            <div className="p-2 rounded shadow-sm border-gray-100 border-2">
-              <h3 className="text-sm mb-3 text-gray-700">Email campaign</h3>
-              <p className="bg-yellow-100 text-xs w-max p-1 rounded mr-2 text-gray-700">
-                WIP
-              </p>
-              <div className="flex flex-row items-center mt-2">
-                <div className="bg-gray-300 rounded-full w-4 h-4 mr-3"></div>
-                <a href="#" className="text-xs text-gray-500">
-                  Sophie Worso
-                </a>
-              </div>
-              <p className="text-xs text-gray-500 mt-2">
-                Jun 21, 2019 &#10141; Jun 21, 2019
-              </p>
-              <p className="text-xs text-gray-500 mt-2">1</p>
-            </div>
-          </div>
-          <div className="flex flex-row items-center text-gray-300 mt-2 px-1">
-            <p className="rounded mr-2 text-2xl">+</p>
-            <p className="pt-1 rounded text-sm">New</p>
-          </div>
-        </div>
+      {/* Tables & Charts */}
 
-        {/* <!-- Complete Kanban --> */}
-        <div className="bg-white rounded px-2 py-2">
-          {/* <!-- board category header --> */}
-          <div className="flex flex-row justify-between items-center mb-2 mx-1">
-            <div className="flex items-center">
-              <h2 className="bg-green-100 text-sm w-max px-1 rounded mr-2 text-gray-700">
-                Complete
-              </h2>
-              <p className="text-gray-400 text-sm">4</p>
-            </div>
-            <div className="flex items-center">
-              <p className="text-gray-300 mr-2 text-2xl">---</p>
-              <p className="text-gray-300 text-2xl">+</p>
-            </div>
-          </div>
-          {/* <!-- board card --> */}
-          <div className="grid grid-rows-2 gap-2">
-            <div className="p-2 rounded shadow-sm border-gray-100 border-2">
-              <h3 className="text-sm mb-3 text-gray-700">
-                Morning emails and to-do list
-              </h3>
-              <p className="bg-green-100 text-xs w-max p-1 rounded mr-2 text-gray-700">
-                Complete
-              </p>
-              <div className="flex flex-row items-center mt-2">
-                <div className="bg-gray-300 rounded-full w-4 h-4 mr-3"></div>
-                <a href="#" className="text-xs text-gray-500">
-                  Sophie Worso
-                </a>
-              </div>
-              <p className="text-xs text-gray-500 mt-2">Jun 21, 2019</p>
-              <p className="text-xs text-gray-500 mt-2">1</p>
-            </div>
+      <div className="mt-5 grid grid-cols-1 gap-5 xl:grid-cols-2">
+        {/* Check Table */}
+        {/* <div>
+          <CheckTable
+            columnsData={columnsDataCheck}
+            tableData={tableDataCheck}
+          />
+        </div> */}
 
-            <div className="p-2 rounded shadow-sm border-gray-100 border-2">
-              <h3 className="text-sm mb-3 text-gray-700">Blog post</h3>
-              <p className="bg-green-100 text-xs w-max p-1 rounded mr-2 text-gray-700">
-                Complete
-              </p>
-              <div className="flex flex-row items-center mt-2">
-                <div className="bg-gray-300 rounded-full w-4 h-4 mr-3"></div>
-                <a href="#" className="text-xs text-gray-500">
-                  Sophie Worso
-                </a>
-              </div>
-              <p className="text-xs text-gray-500 mt-2">Jun 20, 2019</p>
-              <p className="text-xs text-gray-500 mt-2">5</p>
-            </div>
+        {/* Traffic chart & Pie Chart */}
 
-            <div className="p-2 rounded shadow-sm border-gray-100 border-2">
-              <h3 className="text-sm mb-3 text-gray-700">Reconcile accounts</h3>
-              <p className="bg-green-100 text-xs w-max p-1 rounded mr-2 text-gray-700">
-                Complete
-              </p>
-              <div className="flex flex-row items-center mt-2">
-                <div className="bg-gray-300 rounded-full w-4 h-4 mr-3"></div>
-                <a href="#" className="text-xs text-gray-500">
-                  Sophie Worso
-                </a>
-              </div>
-              <p className="text-xs text-gray-500 mt-2">Jun 19, 2019</p>
-              <p className="text-xs text-gray-600 mt-2">4</p>
-            </div>
+        {/* <div className="grid grid-cols-1 gap-5 rounded-[20px] md:grid-cols-2">
+          <DailyTraffic />
+          <PieChartCard />
+        </div> */}
 
-            <div className="p-2 rounded shadow-sm border-gray-100 border-2">
-              <h3 className="text-sm mb-3 text-gray-700">Website AB test</h3>
-              <p className="bg-green-100 text-xs w-max p-1 rounded mr-2 text-gray-700">
-                Complete
-              </p>
-              <div className="flex flex-row items-center mt-2">
-                <div className="bg-gray-300 rounded-full w-4 h-4 mr-3"></div>
-                <a href="#" className="text-xs text-gray-500">
-                  Sophie Worso
-                </a>
-              </div>
-              <p className="text-xs text-gray-500 mt-2">Jun 18, 2019</p>
-              <p className="text-xs text-gray-600 mt-2">3</p>
-            </div>
-          </div>
-          <div className="flex flex-row items-center text-gray-300 mt-2 px-1">
-            <p className="rounded mr-2 text-2xl">+</p>
-            <p className="pt-1 rounded text-sm">New</p>
-          </div>
-        </div>
+        {/* Complex Table , Task & Calendar */}
 
-        <div className="bg-white rounded px-2 py-2">
-          {/* <!-- board category header --> */}
-          <div className="flex flex-row justify-between items-center mb-2 mx-1">
-            <div className="flex items-center">
-              <h2 className="bg-gray-200 w-4 px-1 rounded mr-2 text-sm text-center">
-                .
-              </h2>
-              <p className="text-gray-400 text-sm">0</p>
-            </div>
-            <div className="flex items-center text-gray-300">
-              <p className="mr-2 text-2xl">---</p>
-              <p className="text-2xl">+</p>
-            </div>
+        {/* <ComplexTable
+          columnsData={columnsDataComplex}
+          tableData={tableDataComplex}
+        /> */}
+
+        {/* Task chart & Calendar */}
+
+        {/* <div className="grid grid-cols-1 gap-5 rounded-[20px] md:grid-cols-2">
+          <TaskCard />
+          <div className="grid grid-cols-1 rounded-[20px]">
+            <MiniCalendar />
           </div>
-          <div className="flex flex-row items-center text-gray-300 mt-2 px-1">
-            <p className="rounded mr-2 text-2xl">+</p>
-            <p className="pt-1 rounded text-sm">New</p>
-          </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

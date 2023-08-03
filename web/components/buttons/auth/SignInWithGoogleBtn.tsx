@@ -1,6 +1,7 @@
 "use client";
 import MiniLoadingSpinner from "@components/icons/MiniLoadingSpinner";
 import { auth } from "@config/firebase";
+import { redirect } from "next/navigation";
 import React from "react";
 import { useSignInWithGoogle } from "react-firebase-hooks/auth";
 
@@ -26,7 +27,10 @@ const SignInWithGoogleBtn: React.FC<Props> = ({ icon }) => {
     <button
       className="group h-12 px-6 border-2 border-gray-300 rounded-full transition duration-300 
 hover:border-blue-400 focus:bg-blue-50 active:bg-blue-100"
-      onClick={() => signInWithGoogle()}
+      onClick={() => {
+        signInWithGoogle();
+        redirect("/dashboard");
+      }}
     >
       <div className="relative flex items-center space-x-4 justify-center">
         <img
