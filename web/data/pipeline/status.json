@@ -1,0 +1,33 @@
+[
+  {
+    "id": "xCKi0d3sdxL1dX43wzTn7TbYH",
+    "name": "Lead",
+    "color": "",
+    "position": 0
+  },
+  {
+    "id": "xCKi0xL1sx333adX73wzTn7TbYH",
+    "name": "Negotiation",
+    "color": "",
+    "position": 1
+  },
+
+  {
+    "id": "xCK3i0xL1sx333adX3wzTn87TbYH",
+    "name": "Proposal",
+    "color": "",
+    "position": 2
+  },
+  {
+    "id": "zPhgR5sdd3dNcT9GwY4cW13dVjM",
+    "name": "In Progress",
+    "color": "",
+    "position": 3
+  },
+  {
+    "id": "xCKi0d3sdxL1d2X3wzTn73TbYH",
+    "name": "Closed",
+    "color": "",
+    "position": 4
+  }
+]
