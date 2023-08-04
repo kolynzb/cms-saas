@@ -1,3 +1,4 @@
+import AvatarGroup from "@components/avatars/AvatarGroup";
 import { IPipelineCard } from "@interfaces/kanban.interface";
 import Image from "next/image";
 import React from "react";
@@ -41,7 +42,7 @@ const BoardCard: React.FC<Props> = ({ lead, cardIndex }) => {
             {lead.priority}
           </span>
           <h4 className="mt-3 text-sm font-medium">This is a summary</h4>
-          <div className="flex items-center w-full mt-3 text-xs font-medium text-gray-400">
+          <div className="flex items-center w-full mt-3 text-xs font-medium text-gray-400 justify-between">
             <div className="flex items-center">
               <svg
                 className="w-4 h-4 text-gray-300 fill-current"
@@ -87,12 +88,16 @@ const BoardCard: React.FC<Props> = ({ lead, cardIndex }) => {
               </svg>
               <span className="ml-1 leading-none">1</span>
             </div>
-            <Image
-              className="w-6 h-6 ml-auto rounded-full"
-              src="https://randomuser.me/api/portraits/women/26.jpg"
-              alt=""
-              width={24}
-              height={24}
+            <AvatarGroup
+              max={2}
+              avatars={[
+                "https://randomuser.me/api/portraits/men/21.jpg",
+                "https://randomuser.me/api/portraits/women/24.jpg",
+                "https://randomuser.me/api/portraits/women/22.jpg",
+                "https://randomuser.me/api/portraits/women/21.jpg",
+                "https://randomuser.me/api/portraits/men/26.jpg",
+              ]}
+              size="md"
             />
           </div>
         </div>
