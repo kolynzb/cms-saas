@@ -1,0 +1,171 @@
+[
+  {
+    "id": "xCKi0xL1dX3wzTn7TbYH",
+    "name": "Kim Sanders",
+    "email": "kim@gmail.com",
+    "phone": "203-998-0831",
+    "priority": "High",
+    "status": "Closed",
+    "company": "Notion",
+    "created": "Jul 5, 2023",
+    "lastContacted": "Jul 5, 2023",
+    "expectedClose": "November 4, 2019",
+    "estimatedValue": "20,000.00",
+    "assignees": [
+      {
+        "avatar": "https://randomuser.me/api/portraits/men/68.jpg"
+      }
+    ]
+  },
+  {
+    "id": "zPhgR5NcT9GwYcW1dVjM",
+    "name": "John Doe",
+    "email": "john.doe@example.com",
+    "phone": "555-123-4567",
+    "priority": "Medium",
+    "status": "Closed",
+    "company": "Acme Corporation",
+    "created": "Aug 15, 2023",
+    "lastContacted": "Aug 29, 2023",
+    "expectedClose": "December 20, 2023",
+    "estimatedValue": "15,000.00",
+    "assignees": [
+      {
+        "avatar": "https://randomuser.me/api/portraits/men/12.jpg"
+      },
+      {
+        "avatar": "https://randomuser.me/api/portraits/women/23.jpg"
+      }
+    ]
+  },
+  {
+    "id": "oPy5vTswNyFhaK4R9gJz",
+    "name": "Alice Johnson",
+    "email": "alice.johnson@example.com",
+    "phone": "888-987-6543",
+    "priority": "Low",
+    "status": "In Progress",
+    "company": "TechCo",
+    "created": "Sep 2, 2023",
+    "lastContacted": "Sep 19, 2023",
+    "expectedClose": "December 20, 2023",
+    "estimatedValue": "10,000.00",
+    "assignees": [
+      {
+        "avatar": "https://randomuser.me/api/portraits/women/42.jpg"
+      }
+    ]
+  },
+  {
+    "id": "xCKi0xL1dX3w43zTn7TbYH",
+    "name": "Kim Sanders",
+    "email": "kim@gmail.com",
+    "phone": "203-998-0831",
+    "priority": "High",
+    "status": "Negotiation",
+    "company": "Notion",
+    "created": "Jul 5, 2023",
+    "lastContacted": "Jul 5, 2023",
+    "expectedClose": "November 4, 2019",
+    "estimatedValue": "20,000.00",
+    "assignees": [
+      {
+        "avatar": "https://randomuser.me/api/portraits/men/68.jpg"
+      }
+    ]
+  },
+  {
+    "id": "zPhgRsds9GwYcW1dVjM",
+    "name": "John Doe",
+    "email": "john.doe@example.com",
+    "phone": "555-123-4567",
+    "priority": "Medium",
+    "status": "Closed",
+    "company": "Acme Corporation",
+    "created": "Aug 15, 2023",
+    "lastContacted": "Aug 29, 2023",
+    "expectedClose": "December 20, 2023",
+    "estimatedValue": "15,000.00",
+    "assignees": [
+      {
+        "avatar": "https://randomuser.me/api/portraits/men/12.jpg"
+      },
+      {
+        "avatar": "https://randomuser.me/api/portraits/women/23.jpg"
+      }
+    ]
+  },
+  {
+    "id": "oPy5vsdsdNyFhaK4R9gJz",
+    "name": "Alice Johnson",
+    "email": "alice.johnson@example.com",
+    "phone": "888-987-6543",
+    "priority": "Low",
+    "status": "Proposal",
+    "company": "TechCo",
+    "created": "Sep 2, 2023",
+    "lastContacted": "Sep 19, 2023",
+    "expectedClose": "December 20, 2023",
+    "estimatedValue": "10,000.00",
+    "assignees": [
+      {
+        "avatar": "https://randomuser.me/api/portraits/women/42.jpg"
+      }
+    ]
+  },
+
+  {
+    "id": "oPwewTswNyFhaK4R9gJz",
+    "name": "Alice Johnson",
+    "email": "alice.johnson@example.com",
+    "phone": "888-987-6543",
+    "priority": "Low",
+    "status": "Proposal",
+    "company": "TechCo",
+    "created": "Sep 2, 2023",
+    "lastContacted": "Sep 19, 2023",
+    "expectedClose": "December 20, 2023",
+    "estimatedValue": "10,000.00",
+    "assignees": [
+      {
+        "avatar": "https://randomuser.me/api/portraits/women/42.jpg"
+      }
+    ]
+  },
+  {
+    "id": "oPy5vTs3dsFhaK4R9gJz",
+    "name": "Alice Johnson",
+    "email": "alice.johnson@example.com",
+    "phone": "888-987-6543",
+    "priority": "Medium",
+    "status": "Lead",
+    "company": "TechCo",
+    "created": "Sep 2, 2023",
+    "lastContacted": "Sep 19, 2023",
+    "expectedClose": "December 20, 2023",
+    "estimatedValue": "10,000.00",
+    "assignees": [
+      {
+        "avatar": "https://randomuser.me/api/portraits/women/42.jpg"
+      }
+    ]
+  },
+  {
+    "id": "oPy5vTs67dyFhaK4R9gJz",
+    "name": "Alice Johnson",
+    "email": "alice.johnson@example.com",
+    "phone": "888-987-6543",
+    "priority": "High",
+    "status": "Lead",
+    "company": "TechCo",
+    "created": "Sep 2, 2023",
+    "lastContacted": "Sep 19, 2023",
+    "expectedClose": "December 20, 2023",
+    "estimatedValue": "10,000.00",
+    "assignees": [
+      {
+        "avatar": "https://randomuser.me/api/portraits/women/42.jpg"
+      }
+    ]
+  }
+]
