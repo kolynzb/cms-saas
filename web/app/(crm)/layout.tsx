@@ -9,6 +9,9 @@ import { useEffect, useState } from "react";
 import routes from "@config/routes";
 import { usePathname } from "next/navigation";
 import { CRMProviders } from "@components/CRMProviders";
+import { Toaster } from "react-hot-toast";
+import { TailwindIndicator } from "@components/TailwindIndicator";
+
 
 export const metadata: Metadata = {
   title: "CRM Dashboard",
@@ -83,6 +86,8 @@ export default function RootLayout({
               </div>
             </main>
           </div>
+           <Toaster />
+      <TailwindIndicator />
         </CRMProviders>
       </body>
     </html>
