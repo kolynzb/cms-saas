@@ -8,9 +8,11 @@
     "firestore",
     "flowbite",
     "kanban",
+    "luxon",
     "pageview",
     "prefs",
     "tailwindcss",
+    "tanstack",
     "ternav"
   ]
 }
