@@ -17,6 +17,7 @@
     "@chakra-ui/tooltip": "^2.3.0",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
+    "@radix-ui/react-tooltip": "^1.0.6",
     "@types/node": "20.4.5",
     "@types/react": "18.2.17",
     "@types/react-beautiful-dnd": "^13.1.4",
@@ -31,6 +32,7 @@
     "gray-matter": "^4.0.3",
     "jotai": "^2.2.3",
     "next": "13.4.12",
+    "next-themes": "^0.2.1",
     "postcss": "8.4.27",
     "react": "18.2.0",
     "react-apexcharts": "^1.4.1",
@@ -47,6 +49,9 @@
     "typescript": "5.1.6"
   },
   "devDependencies": {
-    "@types/react-table": "^7.7.14"
+    "@types/react-table": "^7.7.14",
+    "eslint-plugin-tailwindcss": "^3.13.0",
+    "tailwind-merge": "^1.14.0",
+    "tailwindcss-animate": "^1.0.6"
   }
 }
