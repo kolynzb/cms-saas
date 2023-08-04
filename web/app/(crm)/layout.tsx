@@ -8,10 +8,15 @@ import { Inter } from "next/font/google";
 import { useEffect, useState } from "react";
 import routes from "@config/routes";
 import { usePathname } from "next/navigation";
+import { CRMProviders } from "@components/CRMProviders";
 
 export const metadata: Metadata = {
   title: "CRM Dashboard",
   description: "CRM Dashboard",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "white" },
+    { media: "(prefers-color-scheme: dark)", color: "black" },
+  ],
 };
 
 export default function RootLayout({
@@ -22,7 +27,9 @@ export default function RootLayout({
   const pathname = usePathname();
   const [open, setOpen] = useState(true);
   const [currentRoute, setCurrentRoute] = useState(pathname);
-  const [currentRouteName, setCurrentRouteName] = useState(pathname.substring(1));
+  const [currentRouteName, setCurrentRouteName] = useState(
+    pathname.substring(1)
+  );
 
   useEffect(() => {
     window.addEventListener("resize", () =>
@@ -49,32 +56,34 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="flex h-full w-full">
-        <Sidebar open={open} onClose={() => setOpen(false)} />
-        {/* Navbar & Main Content */}
-        <div className="h-full w-full bg-lightPrimary dark:!bg-navy-900">
-          {/* Main Content */}
-          <main
-            className={`mx-[12px] h-full flex-none transition-all md:pr-2 xl:ml-[313px]`}
-          >
-            {/* Routes */}
-            <div className="h-full">
-              <Nav
-                onOpenSideNav={() => setOpen(true)}
-                // logoText={"CRM APP"}
-                brandText={currentRoute}
-                pageName={currentRouteName}
-                // secondary={getActiveNavbar(routes)}
-                // {...rest}
-              />
-              <div className="pt-5s mx-auto mb-auto h-full min-h-[84vh] p-2 md:pr-2">
-                {children}
+        <CRMProviders attribute="class" defaultTheme="system" enableSystem>
+          <Sidebar open={open} onClose={() => setOpen(false)} />
+          {/* Navbar & Main Content */}
+          <div className="h-full w-full bg-lightPrimary dark:!bg-navy-900">
+            {/* Main Content */}
+            <main
+              className={`mx-[12px] h-full flex-none transition-all md:pr-2 xl:ml-[313px]`}
+            >
+              {/* Routes */}
+              <div className="h-full">
+                <Nav
+                  onOpenSideNav={() => setOpen(true)}
+                  // logoText={"CRM APP"}
+                  brandText={currentRoute}
+                  pageName={currentRouteName}
+                  // secondary={getActiveNavbar(routes)}
+                  // {...rest}
+                />
+                <div className="pt-5s mx-auto mb-auto h-full min-h-[84vh] p-2 md:pr-2">
+                  {children}
+                </div>
+                <div className="p-3">
+                  <Footer />
+                </div>
               </div>
-              <div className="p-3">
-                <Footer />
-              </div>
-            </div>
-          </main>
-        </div>
+            </main>
+          </div>
+        </CRMProviders>
       </body>
     </html>
   );
