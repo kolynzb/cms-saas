@@ -3,8 +3,18 @@
 import Card from "@components/card";
 import CardMenu from "@components/card/CardMenu";
 import { ILead } from "@interfaces/kanban.interface";
-import React, { useMemo } from "react";
-import { useTable } from "react-table";
+import React, { useMemo, useState } from "react";
+import {
+  flexRender,
+  getCoreRowModel,
+  getFilteredRowModel,
+  getPaginationRowModel,
+  getSortedRowModel,
+  useReactTable,
+  ColumnDef,
+  SortingState,
+} from "@tanstack/react-table";
+import { FiSearch } from "react-icons/fi";
 
 type Props = {
   pipelineData: ILead[];
@@ -12,93 +22,223 @@ type Props = {
 
 const PipelineTable: React.FC<Props> = ({ pipelineData }) => {
   const data = useMemo(() => pipelineData as any, []);
-  const columns = useMemo(
+
+  const [sorting, setSorting] = useState<SortingState>([]);
+  const [filtering, setFiltering] = useState("");
+
+  const columns = useMemo<ColumnDef<any,any>[]>(
     () => [
       {
-        Header: "ID",
-        accessor: "id",
+        header: "ID",
+        accessorKey: "id",
       },
       {
-        Header: "Name",
-        accessor: "name",
+        header: "Name",
+        accessorKey: "name",
       },
       {
-        Header: "Email",
-        accessor: "email",
+        header: "Email",
+        accessorKey: "email",
       },
       {
-        Header: "Phone",
-        accessor: "phone",
+        header: "Phone",
+        accessorKey: "phone",
       },
       {
-        Header: "Priority",
-        accessor: "priority",
+        header: "Priority",
+        accessorKey: "priority",
       },
       {
-        Header: "Status",
-        accessor: "status",
+        header: "Status",
+        accessorKey: "status",
       },
       {
-        Header: "Company",
-        accessor: "company",
+        header: "Company",
+        accessorKey: "company",
       },
       {
-        Header: "Created",
-        accessor: "created",
+        header: "Created",
+        accessorKey: "created",
       },
       {
-        Header: "Last Contacted",
-        accessor: "lastContacted",
+        header: "Last Contacted",
+        accessorKey: "lastContacted",
       },
       {
-        Header: "Expected Close",
-        accessor: "expectedClose",
+        header: "Expected Close",
+        accessorKey: "expectedClose",
       },
       {
-        Header: "Estimated Value",
-        accessor: "estimatedValue",
+        header: "Estimated Value",
+        accessorKey: "estimatedValue",
       },
     ],
     []
   );
 
-  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
-    useTable({ columns, data });
+  const table = useReactTable({
+    data,
+    columns,
+    getCoreRowModel: getCoreRowModel(),
+    getPaginationRowModel: getPaginationRowModel(),
+    getSortedRowModel: getSortedRowModel(),
+    getFilteredRowModel: getFilteredRowModel(),
+    state: {
+      sorting: sorting,
+      globalFilter: filtering,
+    },
+    onSortingChange: setSorting,
+    onGlobalFilterChange: setFiltering,
+  });
 
   return (
-    <Card extra={"w-full h-full px-6 pb-6 sm:overflow-x-auto"}>
+    <Card extra={"w-full h-full px-6 pb-6 sm:overflow-x-auto mt-4"}>
       <div className="relative flex items-center justify-between pt-4">
-        <div className="text-xl font-bold text-navy-700 dark:text-white">
-          {/* Complex Table */}
+        <div className="flex h-12 items-center rounded-full bg-lightPrimary text-navy-700 dark:bg-navy-900 dark:text-white xl:w-[225px]">
+          <p className="pl-3 pr-2 text-xl">
+            <FiSearch className="h-4 w-4 text-gray-400 dark:text-white" />
+          </p>
+          <input
+            type="text"
+            value={filtering}
+            onChange={(e) => setFiltering(e.target.value)}
+            placeholder="Search To Columns..."
+            className="block h-full w-full  rounded-full bg-lightPrimary text-sm font-medium text-navy-700 outline-none placeholder:!text-gray-400 dark:bg-navy-900 dark:text-white dark:placeholder:!text-white sm:w-fit border-none "
+          />
         </div>
         <CardMenu />
       </div>
-      <div className="mt-8 overflow-x-scroll xl:overflow-hidden">
-        <table {...getTableProps()}>
+      <div className="mt-8 overflow-x-scroll ">
+        <table className="w-full">
           <thead>
-            {headerGroups.map((headerGroup, headerIndex) => (
-              <tr {...headerGroup.getHeaderGroupProps()}>
-                {headerGroup.headers.map((column, colIndex) => (
-                  <th {...column.getHeaderProps()}>
-                    {column.render("Header")}
+            {table.getHeaderGroups().map((headerGroup) => (
+              <tr key={headerGroup.id}>
+                {headerGroup.headers.map((header) => (
+                  <th
+                    key={header.id}
+                    onClick={header.column.getToggleSortingHandler()}
+                    className="border-b border-gray-200 pr-28 pb-[10px] text-start dark:!border-navy-700 cursor-pointer"
+                  >
+                    {header.isPlaceholder ? null : (
+                      <div className="text-xs tracking-wide text-gray-600">
+                        {flexRender(
+                          header.column.columnDef.header,
+                          header.getContext()
+                        )}
+                        {{
+                          asc: "▵",
+                          desc: "▿",
+                        }[header.column.getIsSorted() as string] ?? null}
+                      </div>
+                    )}
                   </th>
                 ))}
               </tr>
             ))}
           </thead>
-          <tbody {...getTableBodyProps()}>
-            {rows.map((row) => {
-              prepareRow(row);
-              return (
-                <tr {...row.getRowProps()}>
-                  {row.cells.map((cell) => (
-                    <td {...cell.getCellProps()}>{cell.render("Cell")}</td>
-                  ))}
-                </tr>
-              );
-            })}
+          <tbody>
+            {table.getRowModel().rows.map((row) => (
+              <tr key={row.id}>
+                {row.getVisibleCells().map((cell) => (
+                  <td key={cell.id} className="pt-[14px] pb-[18px] sm:text-[14px] border pl-[10px]">
+                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                  </td>
+                ))}
+              </tr>
+            ))}
           </tbody>
         </table>
+      </div>
+      <div className="relative flex items-center justify-between pt-4">
+          <div className="inline-flex  mt-2 xs:mt-0">
+            <button
+              disabled={!table.getCanPreviousPage()}
+              onClick={() => table.previousPage()}
+              className="flex items-center justify-center px-3 h-8 text-sm font-medium text-white bg-gray-800 rounded-l hover:bg-gray-900 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+            >
+              <svg
+                className="w-3.5 h-3.5 mr-2"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 14 10"
+              >
+                <path
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M13 5H1m0 0 4 4M1 5l4-4"
+                />
+              </svg>
+              Prev
+            </button>
+            <button
+              disabled={!table.getCanNextPage()}
+              onClick={() => table.nextPage()}
+              className="flex items-center justify-center px-3 h-8 text-sm font-medium text-white bg-gray-800 border-0 border-l border-gray-700 rounded-r hover:bg-gray-900 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+            >
+              Next
+              <svg
+                className="w-3.5 h-3.5 ml-2"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 14 10"
+              >
+                <path
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M1 5h12m0 0L9 1m4 4L9 9"
+                />
+              </svg>
+            </button>
+          </div>
+          <span className="text-sm text-gray-700 dark:text-gray-400">
+            Showing Page{" "}
+            <span className="font-semibold text-gray-900 dark:text-white">
+              {table.getState().pagination.pageIndex + 1}{" "}
+            </span>{" "}
+            of{" "}
+            <span className="font-semibold text-gray-900 dark:text-white">
+              {table.getPageCount()}
+            </span>{" "}
+            with{" "}
+            <span className="font-semibold text-gray-900 dark:text-white">
+              {table.getPrePaginationRowModel().rows.length}{" "}
+            </span>{" "}
+            Entries
+          </span>
+
+        <span className="flex items-center gap-1">
+          <select
+            value={table.getState().pagination.pageSize}
+            onChange={(e) => {
+              table.setPageSize(Number(e.target.value));
+            }}
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          >
+            {[10, 20, 30, 40, 50].map((pageSize) => (
+              <option key={pageSize} value={pageSize}>
+                Show {pageSize}
+              </option>
+            ))}
+          </select>
+          <span className="flex items-center gap-1">
+            | Go to page:
+            <input
+              type="number"
+              defaultValue={table.getState().pagination.pageIndex + 1}
+              onChange={(e) => {
+                const page = e.target.value ? Number(e.target.value) - 1 : 0;
+                table.setPageIndex(page);
+              }}
+              className="border p-1 rounded w-16"
+            />
+          </span>
+        </span>
       </div>
     </Card>
   );
