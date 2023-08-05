@@ -19,8 +19,18 @@ https://blog.devgenius.io/firebase-authentication-with-custom-node-js-express-ba
 - https://github.com/Hesam-Dearboy/kanban-task-management-react-tailwind?ref=reactjsexample.com
 - https://github.dev/seki2020/free-kanban
 - https://codesandbox.io/s/animated-draggable-kanban-board-with-tailwind-and-vue-1wp86?file=/src/App.vue:0-4615
-- react draggable
+- [react beautiful dnd](https://react-beautiful-dnd.netlify.app/?path=/story/virtual-react-virtualized--board)
 
 - [UI components](https://horizon-ui.com/docs-tailwind/docs/react/accordion)
 - https://www.npmjs.com/package/emoji-picker-react
 - https://react-hot-toast.com/
+- [More tailwind components](https://tailwindflex.com/gmer33/customer-support-chatbox)
+
+- [Add task at bottom of kanban column](https://github.com/vunhutien/kanban-ui)
+
+- [firebase](https://youtu.be/2hR-uWjBAgw)
+
+
+$ TODO
+- Mock data with faker
+- style table drop downs
