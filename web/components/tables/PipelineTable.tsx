@@ -167,6 +167,97 @@ const PipelineTable: React.FC<Props> = ({ pipelineData }) => {
           </tbody>
         </table>
       </div>
+      <div className="relative flex items-center justify-between pt-4">
+          <div className="inline-flex  mt-2 xs:mt-0">
+            <button
+              disabled={!table.getCanPreviousPage()}
+              onClick={() => table.previousPage()}
+              className="flex items-center justify-center px-3 h-8 text-sm font-medium text-white bg-gray-800 rounded-l hover:bg-gray-900 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+            >
+              <svg
+                className="w-3.5 h-3.5 mr-2"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 14 10"
+              >
+                <path
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M13 5H1m0 0 4 4M1 5l4-4"
+                />
+              </svg>
+              Prev
+            </button>
+            <button
+              disabled={!table.getCanNextPage()}
+              onClick={() => table.nextPage()}
+              className="flex items-center justify-center px-3 h-8 text-sm font-medium text-white bg-gray-800 border-0 border-l border-gray-700 rounded-r hover:bg-gray-900 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+            >
+              Next
+              <svg
+                className="w-3.5 h-3.5 ml-2"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 14 10"
+              >
+                <path
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M1 5h12m0 0L9 1m4 4L9 9"
+                />
+              </svg>
+            </button>
+          </div>
+          <span className="text-sm text-gray-700 dark:text-gray-400">
+            Showing Page{" "}
+            <span className="font-semibold text-gray-900 dark:text-white">
+              {table.getState().pagination.pageIndex + 1}{" "}
+            </span>{" "}
+            of{" "}
+            <span className="font-semibold text-gray-900 dark:text-white">
+              {table.getPageCount()}
+            </span>{" "}
+            with{" "}
+            <span className="font-semibold text-gray-900 dark:text-white">
+              {table.getPrePaginationRowModel().rows.length}{" "}
+            </span>{" "}
+            Entries
+          </span>
+
+        <span className="flex items-center gap-1">
+          <select
+            value={table.getState().pagination.pageSize}
+            onChange={(e) => {
+              table.setPageSize(Number(e.target.value));
+            }}
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          >
+            {[10, 20, 30, 40, 50].map((pageSize) => (
+              <option key={pageSize} value={pageSize}>
+                Show {pageSize}
+              </option>
+            ))}
+          </select>
+          <span className="flex items-center gap-1">
+            | Go to page:
+            <input
+              type="number"
+              defaultValue={table.getState().pagination.pageIndex + 1}
+              onChange={(e) => {
+                const page = e.target.value ? Number(e.target.value) - 1 : 0;
+                table.setPageIndex(page);
+              }}
+              className="border p-1 rounded w-16"
+            />
+          </span>
+        </span>
+      </div>
 
       <div className="relative flex items-center justify-between pt-4">
         <div className="inline-flex mt-2 xs:mt-0">

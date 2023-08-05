@@ -1,6 +1,6 @@
 "use client";
 import "@styles/globals.css";
-import { Provider } from "jotai";
+import React from "react";
 
 export default function RootLayout({
   children,
@@ -9,7 +9,6 @@ export default function RootLayout({
 }) {
   return (
     <>
-   
       {children}
     </>
   );
