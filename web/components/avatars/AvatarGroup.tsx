@@ -33,7 +33,7 @@ const AvatarGroup: React.FC<Props> = ({ avatars, max, size }) => {
 
       {avatars.length > (max as number) && (
         <p
-          className={`flex items-center justify-center w-10 h-10 text-xs font-medium text-white glass-morph border-2 border-none rounded-full hover:bg-gray-600 ${
+          className={`flex items-center justify-center w-10 h-10 text-xs font-medium text-white  glass-morph border-2 border-none rounded-full hover:bg-gray-600 ${
             size === "lg" ? "w-10 h-10" : size === "md" ? "w-5 h-5" : "w-4 h-4"
           }`}
         >
