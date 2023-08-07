@@ -34,3 +34,4 @@ https://blog.devgenius.io/firebase-authentication-with-custom-node-js-express-ba
 $ TODO
 - Mock data with faker
 - style table drop downs
+- [firebase V9 tutorial](https://youtu.be/2hR-uWjBAgw)
