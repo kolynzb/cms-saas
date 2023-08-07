@@ -41,6 +41,7 @@
     "framer-motion": "^10.15.0",
     "gray-matter": "^4.0.3",
     "jotai": "^2.2.3",
+    "lucide-react": "^0.264.0",
     "luxon": "^3.3.0",
     "nanoid": "^4.0.2",
     "next": "13.4.12",

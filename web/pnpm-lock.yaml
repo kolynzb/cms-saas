@@ -101,6 +101,9 @@ dependencies:
   jotai:
     specifier: ^2.2.3
     version: 2.2.3(@types/react@18.2.17)(react@18.2.0)
+  lucide-react:
+    specifier: ^0.264.0
+    version: 0.264.0(react@18.2.0)
   luxon:
     specifier: ^3.3.0
     version: 3.3.0
@@ -7078,6 +7081,14 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       yallist: 4.0.0
+    dev: false
+
+  /lucide-react@0.264.0(react@18.2.0):
+    resolution: {integrity: sha512-BmQTimZDhAy2vH9aCeQa+TLrkWwWd8FP5GRMoK3hKEvO1eS/llGXe4RxrZGSTdOjhw1JuDLpvtS8VmNCKxhL5A==}
+    peerDependencies:
+      react: ^16.5.1 || ^17.0.0 || ^18.0.0
+    dependencies:
+      react: 18.2.0
     dev: false
 
   /luxon@3.3.0:
