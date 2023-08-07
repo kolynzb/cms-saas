@@ -185,8 +185,10 @@ const PipelineTable: React.FC<Props> = ({ pipelineData }) => {
         {/* toogle start */}
         {/* <CardMenu /> */}
         <DropdownMenu>
-          <DropdownMenuTrigger asChild className="hover:bg-gray-50/5 px-2 py-2 rounded-md cursor-pointer flex items-center justify-between">
-          <SlidersHorizontal />  <p>Filter Columns</p>
+          <DropdownMenuTrigger asChild className="hover:bg-gray-50/5 px-2 py-2 rounded-md cursor-pointer transition-all duration-30 ease-in-out ">
+            <span className="flex items-center justify-center space-x-2">
+          <SlidersHorizontal className="opacity-60" />  <p>Filter Columns</p>
+            </span>
           </DropdownMenuTrigger>
           <DropdownMenuContent
             sideOffset={8}
@@ -326,7 +328,7 @@ const PipelineTable: React.FC<Props> = ({ pipelineData }) => {
           <button
             disabled={!table.getCanPreviousPage()}
             onClick={() => table.previousPage()}
-            className="flex items-center justify-center px-3 h-8 text-sm font-medium text-white bg-gray-800 rounded-l hover:bg-gray-900 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+            className="flex items-center justify-center px-3 h-8 text-sm font-medium text-white  bg-gray-800/20 rounded-l hover:bg-gray-900 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white cursor-pointer disabled:cursor-default "
           >
             <svg
               className="w-3.5 h-3.5 mr-2"
@@ -348,7 +350,7 @@ const PipelineTable: React.FC<Props> = ({ pipelineData }) => {
           <button
             disabled={!table.getCanNextPage()}
             onClick={() => table.nextPage()}
-            className="flex items-center justify-center px-3 h-8 text-sm font-medium text-white bg-gray-800 border-0 border-l border-gray-700 rounded-r hover:bg-gray-900 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+            className="flex items-center justify-center px-3 h-8 text-sm font-medium text-white bg-gray-800/20 border-0 border-l border-gray-700 rounded-r hover:bg-gray-900 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white cursor-pointer disabled:cursor-default"
           >
             Next
             <svg
@@ -390,7 +392,7 @@ const PipelineTable: React.FC<Props> = ({ pipelineData }) => {
             onChange={(e) => {
               table.setPageSize(Number(e.target.value));
             }}
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            className="bg-transparent border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           >
             {[10, 20, 30, 40, 50].map((pageSize) => (
               <option key={pageSize} value={pageSize}>
