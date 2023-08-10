@@ -5,53 +5,59 @@ import MiniLoadingSpinner from "@components/icons/MiniLoadingSpinner";
 import FieldErrorMessage from "@components/landing/forms/FieldErrorMessage";
 import { auth } from "@config/firebase";
 import Link from "next/link";
-import React, { useState } from "react";
-import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
+import React from "react";
+import { useAuthState, useCreateUserWithEmailAndPassword} from "react-firebase-hooks/auth";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+import { toast } from "react-hot-toast";
+import { redirect, useRouter } from 'next/navigation'
 
 type Props = {};
 
+interface IFormInput {
+  email: string;
+  password: string;
+  passwordConfirm: string;
+}
+
+const signUpSchema =  yup.object({
+  email: yup.string()
+    .email('Invalid email address')
+    .required('Email is required'),
+  password: yup.string()
+    .min(8, 'Password must be at least 8 characters')
+    .required('Password is required'),
+  passwordConfirm: yup.string()
+    .oneOf([yup.ref('password'), undefined], 'Passwords must match')
+    .required('Password confirmation is required'),
+});
+
+
 const Register = (props: Props) => {
-  const [signUpForm, setSignUpForm] = useState({
-    email: "",
-    password: "",
-    confirmPassword: "",
+  const [user] = useAuthState(auth);
+  if (user){
+    redirect('/dashboard')
+  }
+
+  const router = useRouter()
+  const { register, handleSubmit, formState: { errors } } = useForm<IFormInput>({
+    resolver: yupResolver(signUpSchema)
   });
-  const [error, setError] = useState("");
-  const [createUserWithEmailAndPassword, user, loading, fbError] =
+
+  
+  const [createUserWithEmailAndPassword, loading, fbError] =
     useCreateUserWithEmailAndPassword(auth);
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSignUpForm((prev) => ({
-      ...prev,
-      [event.target.name]: event.target.value,
-    }));
-  };
+   const onSubmit = async (data: IFormInput) => {
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+   await createUserWithEmailAndPassword(data.email, data.password).then(()=>{ toast.success('Registered successfully!') 
+   router.push("/auth/sign-in")
+  }).catch(()=>toast.error("Error registering"));
+   };
 
-    // Reset the error before trying to submit the form
-    if (error) setError("");
+ 
 
-    // Check passwords match
-    if (signUpForm.password !== signUpForm.confirmPassword) {
-      setError("Passwords do not match");
-      return;
-    }
-
-    // Check password format
-    const passwordRegex =
-      /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,256}$/gm;
-
-    if (!passwordRegex.test(signUpForm.password)) {
-      setError(
-        "Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character."
-      );
-      return;
-    }
-
-    createUserWithEmailAndPassword(signUpForm.email, signUpForm.password);
-  };
 
   return (
     <div className="h-screen md:flex">
@@ -74,7 +80,7 @@ const Register = (props: Props) => {
         <div className="absolute -top-20 -right-20 w-80 h-80 border-4 rounded-full border-opacity-30 border-t-8"></div>
       </div>
       <div className="flex md:w-1/2 justify-center py-10 items-center bg-white">
-        <form className="bg-white" onSubmit={handleSubmit}>
+        <form className="bg-white" onSubmit={handleSubmit(onSubmit)}>
           <h1 className="text-gray-800 font-bold text-2xl mb-1">
             Hello Again!
           </h1>
@@ -93,38 +99,41 @@ const Register = (props: Props) => {
             <input
               className="pl-2 outline-none border-none"
               type="email"
-              name=""
-              id=""
+            
+       
               placeholder="Email Address"
-              onChange={handleChange}
+              {...register("email")}
             />
           </div>
+          {errors.email && <p className="text-red-500 text-xs">{errors.email.message}</p>}
           <div className="flex items-center border-2 py-2 px-3 rounded-2xl mb-4">
             <PasswordIcon />
             <input
               className="pl-2 outline-none border-none"
-              name="password"
+         
               type="password"
-              id=""
+          
               placeholder="Password"
-              onChange={handleChange}
+              {...register("password")}
             />
           </div>
+          {errors.password && <p className="text-red-500 text-xs">{errors.password.message}</p>}
           <div className="flex items-center border-2 py-2 px-3 rounded-2xl">
             <PasswordIcon />
             <input
               className="pl-2 outline-none border-none"
-              name="confirmPassword"
+
               id=""
               type="password"
               placeholder="Confirm Password"
-              onChange={handleChange}
+              {...register("passwordConfirm")}
             />
           </div>
-          {(error || fbError) && (
+          {errors.passwordConfirm && <p className="text-red-500 text-xs">{errors.passwordConfirm.message}</p>}
+          {( fbError) && (
             <FieldErrorMessage
               shortMessage="field error"
-              message={error || fbError?.message}
+              message={(fbError as any)?.message}
             />
           )}
           <button

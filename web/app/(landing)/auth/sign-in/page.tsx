@@ -1,7 +1,7 @@
 "use client";
 import {
+  useAuthState,
   useSignInWithEmailAndPassword,
-  useSignInWithGoogle,
 } from "react-firebase-hooks/auth";
 import React, { useState } from "react";
 import { auth } from "@config/firebase";
@@ -10,28 +10,49 @@ import site from "@config/site.json";
 import MiniLoadingSpinner from "@components/icons/MiniLoadingSpinner";
 import FieldErrorMessage from "@components/landing/forms/FieldErrorMessage";
 import SignInWithGoogleBtn from "@components/buttons/auth/SignInWithGoogleBtn";
-
+import { redirect, useRouter } from "next/navigation";
+import * as yup from "yup";
+import { toast } from "react-hot-toast";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
 type Props = {};
 
+interface IFormInput {
+  email: string;
+  password: string;
+}
+
+const signInSchema =  yup.object({
+  email: yup.string()
+    .email('Invalid email address')
+    .required('Email is required'),
+  password: yup.string()
+    .min(8, 'Password must be at least 8 characters')
+    .required('Password is required'),
+});
+
 const SignIn = (props: Props) => {
-  const [signInForm, setSignInForm] = useState({
-    email: "",
-    password: "",
+  const [user] = useAuthState(auth);
+  if (user){
+    redirect('/dashboard')
+  }
+
+  const router = useRouter()
+  const { register, handleSubmit, formState: { errors } } = useForm<IFormInput>({
+    resolver: yupResolver(signInSchema)
   });
-  const [signInWithEmailAndPassword, user, loading, fbError] =
+
+  const [signInWithEmailAndPassword,  loading, fbError] =
     useSignInWithEmailAndPassword(auth);
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
 
-    signInWithEmailAndPassword(signInForm.email, signInForm.password);
-  };
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSignInForm((prev) => ({
-      ...prev,
-      [event.target.name]: event.target.value,
-    }));
-  };
+
+   const onSubmit = async (data: IFormInput) => {
+
+   await signInWithEmailAndPassword(data.email, data.password).then(()=>{ toast.success('Signed In successfully!') 
+   router.push("/auth/sign-in")
+  }).catch(()=>toast.error("Error Signing In"));
+   };
 
   return (
     <div className="relative py-16 ">
@@ -50,7 +71,7 @@ const SignIn = (props: Props) => {
                   Sign in to unlock the <br /> best of logo.
                 </h2>
               </div>
-              <form onSubmit={handleSubmit} className="mt-16 grid space-y-4">
+              <form onSubmit={handleSubmit(onSubmit)} className="mt-16 grid space-y-4">
                 <SignInWithGoogleBtn />
 
                 <div className="flex items-center border-2 py-2 px-3 rounded-2xl mb-4">
@@ -58,27 +79,28 @@ const SignIn = (props: Props) => {
                   <input
                     className="pl-2 outline-none border-none"
                     type="email"
-                    name=""
-                    id=""
+         
                     placeholder="Email Address"
-                    onChange={handleChange}
+                    {...register("email")}
                   />
                 </div>
+                {errors.email && <p className="text-red-500 text-xs">{errors.email.message}</p>}
                 <div className="flex items-center border-2 py-2 px-3 rounded-2xl mb-4">
                   <PasswordIcon />
                   <input
                     className="pl-2 outline-none border-none"
-                    name="password"
+
                     type="password"
-                    id=""
+       
                     placeholder="Password"
-                    onChange={handleChange}
+                    {...register("password")}
                   />
                 </div>
+                {errors.password && <p className="text-red-500 text-xs">{errors.password.message}</p>}
                 {fbError && (
                   <FieldErrorMessage
                     shortMessage="field error"
-                    message={fbError.message}
+                    message={(fbError as any).message}
                   />
                 )}
                 <button
