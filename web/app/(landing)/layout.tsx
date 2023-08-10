@@ -2,6 +2,7 @@ import Footer from "@components/layout/landing/Footer";
 import Nav from "@components/layout/landing/Nav";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { Toaster } from "react-hot-toast";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -45,6 +46,8 @@ export default function RootLayout({
       <body className="bg-white dark:bg-gray-900">
         <Nav />
         {children}
+        <Toaster    position="top-center"
+  reverseOrder={false}/>
         <Footer />
       </body>
     </html>
