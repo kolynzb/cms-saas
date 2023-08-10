@@ -36,3 +36,5 @@ $ TODO
 - style table drop downs
 - [firebase V9 tutorial](https://youtu.be/2hR-uWjBAgw)
 - [firebase v9 dashboard](https://youtu.be/D9W7AFeJ3kk?list=TLPQMDcwODIwMjOi7VQfQhAu0Q)
+
+- [Tailwind components](https://www.hyperui.dev/components/marketing/footers#component-1)
