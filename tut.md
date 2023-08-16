@@ -5,3 +5,4 @@ https://joshuapleduc.medium.com/firebase-and-react-firebase-hooks-authentication
 https://github.com/csfrequency/react-firebase-hooks/tree/master/firestore#full-example
 https://app.eraser.io/workspace/fBTDYOfsW1WCHXhI8i58
 https://chat.openai.com/share/2b639229-dccd-4baa-84f3-0ae2f76468bc
+- [timestamps on statuses](https://youtu.be/GIDlEaNPKbU)
