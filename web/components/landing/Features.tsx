@@ -5,7 +5,7 @@ type Props = {};
 
 const Features = (props: Props) => {
   return (
-    <div id="features">
+    <section id="features">
       <Container>
         <div className="md:w-2/3 lg:w-1/2">
           <svg
@@ -190,7 +190,7 @@ const Features = (props: Props) => {
           </div>
         </div>
       </Container>
-    </div>
+    </section>
   );
 };
 
