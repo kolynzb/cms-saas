@@ -11,12 +11,16 @@ import {
 } from "react-icons/io";
 import Dropdown from "@components/DropDown";
 import Image from "next/image";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "@config/firebase";
+import { signOut } from "firebase/auth";
 
 type Props = { onOpenSideNav: any; brandText: string; pageName: string };
 
 const Nav: React.FC<Props> = ({ onOpenSideNav, brandText, pageName }) => {
   const [darkMode, setDarkMode] = React.useState(false);
-
+  const [user] = useAuthState(auth);
+  
   return (
     <nav className="sticky top-4 z-40 flex flex-row flex-wrap items-center justify-between rounded-xl bg-white/10 p-2 backdrop-blur-xl dark:bg-[#0b14374d]">
       <div className="ml-[6px]">
@@ -127,7 +131,8 @@ const Nav: React.FC<Props> = ({ onOpenSideNav, brandText, pageName }) => {
           <div className="flex w-[350px] flex-col gap-2 rounded-[20px] bg-white p-4 shadow-xl shadow-shadow-500 dark:!bg-navy-700 dark:text-white dark:shadow-none">
             <div
               style={{
-                backgroundImage: `url(${"https://res.cloudinary.com/kolynz-b/image/upload/v1638636909/ko.lynz_b_218871186_831566384142117_7643572219233961744_n_wcsj3e.jpg"})`,
+                backgroundImage: `url(${user?.photoURL})`,
+                // backgroundImage: `url(${"https://res.cloudinary.com/kolynz-b/image/upload/v1638636909/ko.lynz_b_218871186_831566384142117_7643572219233961744_n_wcsj3e.jpg"})`,
                 backgroundRepeat: "no-repeat",
                 backgroundSize: "cover",
               }}
@@ -179,8 +184,8 @@ const Nav: React.FC<Props> = ({ onOpenSideNav, brandText, pageName }) => {
           button={
             <Image
               className="h-10 w-10 rounded-full"
-              src="https://res.cloudinary.com/kolynz-b/image/upload/v1638636909/ko.lynz_b_218871186_831566384142117_7643572219233961744_n_wcsj3e.jpg"
-              alt="Elon Musk"
+              src={user?.photoURL as string}
+              alt={`${user?.displayName}`}
               width={40}
               height={40}
             />
@@ -191,7 +196,7 @@ const Nav: React.FC<Props> = ({ onOpenSideNav, brandText, pageName }) => {
             <div className="p-4">
               <div className="flex items-center gap-2">
                 <p className="text-sm font-bold text-navy-700 dark:text-white">
-                  👋 Hey, Atuhaire
+                  👋 Hey, {user?.displayName}
                 </p>{" "}
               </div>
             </div>
@@ -210,9 +215,9 @@ const Nav: React.FC<Props> = ({ onOpenSideNav, brandText, pageName }) => {
               >
                 Newsletter Settings
               </a>
-              <a
-                href=" "
-                className="mt-3 text-sm font-medium text-red-500 hover:text-red-500"
+              <a 
+                onClick={()=> signOut(auth)}
+                className="mt-3 cursor-pointer text-sm font-medium text-red-500 hover:text-red-500"
               >
                 Log Out
               </a>
