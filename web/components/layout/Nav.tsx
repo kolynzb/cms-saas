@@ -14,13 +14,14 @@ import Image from "next/image";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "@config/firebase";
 import { signOut } from "firebase/auth";
+import { ThemeToggle } from "@components/AIChat/theme-toggle";
 
 type Props = { onOpenSideNav: any; brandText: string; pageName: string };
 
 const Nav: React.FC<Props> = ({ onOpenSideNav, brandText, pageName }) => {
   const [darkMode, setDarkMode] = React.useState(false);
   const [user] = useAuthState(auth);
-  
+
   return (
     <nav className="sticky top-4 z-40 flex flex-row flex-wrap items-center justify-between rounded-xl bg-white/10 p-2 backdrop-blur-xl dark:bg-[#0b14374d]">
       <div className="ml-[6px]">
@@ -161,7 +162,8 @@ const Nav: React.FC<Props> = ({ onOpenSideNav, brandText, pageName }) => {
             </a>
           </div>
         </Dropdown>
-        <div
+
+        {/* <div
           className="cursor-pointer text-gray-600"
           onClick={() => {
             if (darkMode) {
@@ -178,7 +180,8 @@ const Nav: React.FC<Props> = ({ onOpenSideNav, brandText, pageName }) => {
           ) : (
             <RiMoonFill className="h-4 w-4 text-gray-600 dark:text-white" />
           )}
-        </div>
+        </div> */}
+        <ThemeToggle />
         {/* Profile & Dropdown */}
         <Dropdown
           button={
@@ -215,8 +218,8 @@ const Nav: React.FC<Props> = ({ onOpenSideNav, brandText, pageName }) => {
               >
                 Newsletter Settings
               </a>
-              <a 
-                onClick={()=> signOut(auth)}
+              <a
+                onClick={() => signOut(auth)}
                 className="mt-3 cursor-pointer text-sm font-medium text-red-500 hover:text-red-500"
               >
                 Log Out
