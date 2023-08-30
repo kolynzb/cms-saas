@@ -2,7 +2,7 @@
 
 import * as React from 'react'
 
-import { cn } from '@utils/tw'
+import { cn } from '@utils/tailwind'
 
 function IconNextChat({
   className,
