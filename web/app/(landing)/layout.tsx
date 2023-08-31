@@ -1,40 +1,10 @@
-import Footer from "@components/layout/landing/Footer";
-import Nav from "@components/layout/landing/Nav";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import { Toaster } from "react-hot-toast";
+import Nav from "@components/layout/landing/Nav";
+import Footer from "@components/layout/landing/Footer";
+import { ThemeToggle } from "@components/theme-toggle";
 
-const inter = Inter({ subsets: ["latin"] });
 
-export const metadata: Metadata = {
-  title: "CRM Saas",
-  description: "CRM page",
-  authors: [{ name: "Atuhaire Collins Benda", url: "benda.vercel.app" }],
-  keywords: ["CRM"],
-  themeColor: "#ffffff",
-  applicationName: "CRM",
-  viewport:
-    "width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=0",
-  icons: [
-    {
-      rel: "apple-touch-icon",
-      url: "/favicon/apple-touch-icon.png",
-    },
-    {
-      rel: "mask-icon",
-      url: "/favicon/safari-pinned-tab.svg",
-    },
-    {
-      rel: "icon",
-      url: "/favicon/favicon-32x32.png",
-    },
-    {
-      rel: "icon",
-      url: "/favicon/favicon-16x16.png",
-    },
-  ],
-  manifest: "/favicon/site.webmanifest",
-};
 
 export default function RootLayout({
   children,
@@ -46,9 +16,12 @@ export default function RootLayout({
       <body className="bg-white dark:bg-gray-900">
         <Nav />
         {children}
-        <Toaster    position="top-center"
-  reverseOrder={false}/>
+        <Toaster position="top-center" reverseOrder={false} />
         <Footer />
+
+        <div className="fixed right-0 top-[50vh] z-[1000] flex items-center justify-center rounded-l-full bg-white/10  shadow-gray-100  backdrop-blur-xl px-[6px] py-[6px]">
+        <ThemeToggle />
+        </div>
       </body>
     </html>
   );
