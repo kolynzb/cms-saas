@@ -48,10 +48,11 @@ const Register = (props: Props) => {
   
   const [createUserWithEmailAndPassword, loading, fbError] =
     useCreateUserWithEmailAndPassword(auth);
-
+     
    const onSubmit = async (data: IFormInput) => {
 
    await createUserWithEmailAndPassword(data.email, data.password).then(()=>{ toast.success('Registered successfully!') 
+  //  user?.sendEmailVerification()
    router.push("/auth/sign-in")
   }).catch(()=>toast.error("Error registering"));
    };
