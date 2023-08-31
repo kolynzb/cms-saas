@@ -1,6 +1,6 @@
 import Link from "next/link";
 import React from "react";
-import site from "@config/site.json";
+import site from "@config/site";
 
 type Props = {};
 
