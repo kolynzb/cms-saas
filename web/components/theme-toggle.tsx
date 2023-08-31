@@ -3,7 +3,7 @@
 import * as React from "react";
 import { useTheme } from "next-themes";
 import { RiMoonFill, RiMoonLine, RiSunFill, RiSunLine } from "react-icons/ri";
-import { Button } from "./button";
+import { Button } from "./AIChat/button";
 
 export function ThemeToggle() {
   const { setTheme, theme } = useTheme();
