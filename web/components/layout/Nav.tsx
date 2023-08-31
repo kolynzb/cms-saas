@@ -14,7 +14,7 @@ import Image from "next/image";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "@config/firebase";
 import { signOut } from "firebase/auth";
-import { ThemeToggle } from "@components/AIChat/theme-toggle";
+import { ThemeToggle } from "@components/theme-toggle";
 
 type Props = { onOpenSideNav: any; brandText: string; pageName: string };
 
