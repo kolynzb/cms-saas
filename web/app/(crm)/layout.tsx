@@ -8,7 +8,6 @@ import { Inter } from "next/font/google";
 import { useEffect, useState } from "react";
 import routes from "@config/routes";
 import { usePathname } from "next/navigation";
-import { CRMProviders } from "@components/CRMProviders";
 import { Toaster } from "react-hot-toast";
 import { TailwindIndicator } from "@components/TailwindIndicator";
 
@@ -59,7 +58,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="flex h-full w-full">
-        <CRMProviders attribute="class" defaultTheme="system" enableSystem>
+        {/* <CRMProviders attribute="class" defaultTheme="system" enableSystem> */}
           <Sidebar open={open} onClose={() => setOpen(false)} />
           {/* Navbar & Main Content */}
           <div className="h-full w-full bg-lightPrimary dark:!bg-navy-900">
@@ -85,10 +84,10 @@ export default function RootLayout({
                 </div>
               </div>
             </main>
+            <Toaster />
+            {/* <TailwindIndicator /> */}
           </div>
-           <Toaster />
-      <TailwindIndicator />
-        </CRMProviders>
+        {/* </CRMProviders> */}
       </body>
     </html>
   );
