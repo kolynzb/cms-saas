@@ -14,7 +14,7 @@ import {
   IconVercel,
 } from "./icons";
 import { SidebarFooter } from "./Sidebar/sidebar-footer";
-import { ThemeToggle } from "./theme-toggle";
+import { ThemeToggle } from "../theme-toggle";
 import { ClearHistory } from "./clear-history";
 // import { UserMenu } from "@/components/user-menu";
 // import { LoginButton } from "@/components/login-button";
